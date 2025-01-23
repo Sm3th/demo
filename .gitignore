@@ -1,0 +1,30 @@
+# Genel Java Projesi ve IntelliJ/Eclipse Ayarları
+*.class
+*.jar
+*.war
+*.log
+*.iml
+.idea/
+*.project
+*.classpath
+target/
+
+# Maven ve Gradle ile İlgili
+.mvn/
+.gradle/
+build/
+!src/main/**/application.properties
+
+# İşletim Sistemi Dosyaları
+.DS_Store
+Thumbs.db
+
+# Veritabanı ve Çevre Değişken Dosyaları
+*.db
+.env
+.env.*
+*.sqlite
+
+# Diğer İlgisiz Dosyalar
+*.log
+*.tmp
