@@ -3,7 +3,6 @@
 
 # Log Files
 *.log
-*.tmp
 
 # IntelliJ IDEA
 .idea/
@@ -21,34 +20,11 @@ build/
 # Maven
 .mvn/
 !src/main/**/application.properties
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-
-# Gradle
-.gradle/
-gradle-app.setting
-
-# OS Files
-.DS_Store
-Thumbs.db
 
 # Environment Files
 .env
 .env.*
+
+# SQLite Database
 *.db
 *.sqlite
-
-# Temporary Files
-*.swp
-*.swo
-*.bak
-*.tmp
-
-# JetBrains IDE Settings
-out/
-
-# Flyway Migration
-src/main/resources/db/migration/*.sql
