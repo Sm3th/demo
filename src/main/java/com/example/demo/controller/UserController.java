@@ -19,7 +19,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerUser(@RequestBody User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword())); // Şifreyi hashle
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "User registered successfully!";
     }

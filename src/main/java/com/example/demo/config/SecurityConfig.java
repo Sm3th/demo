@@ -21,10 +21,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // CSRF'yi devre dışı bırak (API için)
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/register", "/login").permitAll() // Kayıt ve giriş serbest
-                        .anyRequest().authenticated() // Diğer her şey giriş yapmış olmayı gerektirir
+                        .requestMatchers("/register", "/login").permitAll()
+                        .anyRequest().authenticated() 
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
@@ -36,7 +36,7 @@ public class SecurityConfig {
                         .deleteCookies("JSESSIONID")
                         .permitAll()
                 )
-                .httpBasic(Customizer.withDefaults()); // 🔥 Spring Security 6+ için doğru kullanım
+                .httpBasic(Customizer.withDefaults());
 
         return http.build();
     }
