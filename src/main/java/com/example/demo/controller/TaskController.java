@@ -2,7 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Task;
 import com.example.demo.service.TaskService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,16 +12,21 @@ import java.util.List;
 @RequestMapping("/tasks")
 public class TaskController {
 
-    @Autowired
-    private TaskService taskService;
+    private final TaskService taskService;
 
-    @PostMapping("/create")
-    public Task createTask(@RequestParam String title, @RequestParam String description, @RequestParam String username) {
-        return taskService.createTask(title, description, username);
+    public TaskController(TaskService taskService) {
+        this.taskService = taskService;
     }
 
-    @GetMapping("/{username}")
-    public List<Task> getTasksByUsername(@PathVariable String username) {
+    @GetMapping
+    public List<Task> getUserTasks(@AuthenticationPrincipal UserDetails userDetails) {
+        String username = userDetails.getUsername();
         return taskService.getTasksByUsername(username);
+    }
+
+    @PostMapping
+    public Task createTask(@AuthenticationPrincipal UserDetails userDetails, @RequestBody Task task) {
+        String username = userDetails.getUsername();
+        return taskService.createTask(username, task);
     }
 }

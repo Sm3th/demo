@@ -43,4 +43,9 @@ public class TaskService {
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
+
+    public Task createTask(String username, Task task) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'createTask'");
+    }
 }
